@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>空间智能算网模拟验证平台</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
+
+    <link rel="stylesheet" href="css/css2.css">
+
+    <!-- 引入jquery -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
+    <!-- Latest compiled and minified Locales -->
+    <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <script>
+        var errorcount = 0;
+        var errorcountcon = 0;
+    </script>
+    <script>
+        $('tr td').on('hover', function() {
+            $(this).attr("title", $(this).text());
+            $(this).css("background-color", 'white');
+        });
+    </script>
+</head>
+
+<body background="images/background.jpg" style="background-repeat: no-repeat;background-size: 100% 100%; background-attachment: fixed; text-align: center">
+
+    <center>
+        <div style="margin:1% auto; width: 1900px;height: 1000px; position:relative">
+            <div style="position: absolute;; left:1.5%;top:0%;z-index: 2000;"><img src="images//Qian Lab Logo v1 CHS RW.png" width='300px' height='75px'></div>
+            <h1>空间高动态智能算网模拟验证平台</h1>
+            <h2 style="position: absolute;right:5%;top:0%">频谱与网络团队</h2>
+            <!-- 简介-->
+            <div id="sectionintro" style="width: 97%;height: 6%; left:1.5%;top:11%">
+                <h2 style="color: #113864;"> 空间算网通过空间网络化计算协议体系，能够充分利用高动态环境的分散流动卫星资源，构建临时任务计算网络。</h2>
+            </div>
+            <!-- bottom -->
+            <div style="position: absolute;top: 18%;width: 50%;left:35%;height: 5%;z-index: 2100;">
+                <div class="btn-group" style="display: inline;margin: 0.5em;">
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style=" font-size: 18px;">卫星加入</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style=" font-size: 18px;">
+                                <span class="caret"></span>
+                                <span class="sr-only">切换下拉菜单</span>
+                            </button>
+                        <ul class="dropdown-menu" role="menu">
+
+                            <li><a id='d2add'>卫星2</a></li>
+                            <li><a id='d3add'>卫星3</a></li>
+                            <li><a id='d4add'>卫星4</a></li>
+                            <li><a id='d5add'>卫星5</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+
+                        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" style=" font-size: 18px;" data-toggle="dropdown">卫星超载</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style=" font-size: 18px;">
+                            <span class="caret"></span>
+                            <span class="sr-only">切换下拉菜单</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a id='d2cpu'>卫星2</a></li>
+                            <li><a id='d3cpu'>卫星3</a></li>
+                            <li><a id='d4cpu'>卫星4</a></li>
+                            <li><a id='d5cpu'>卫星5</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style=" font-size: 18px;">停止超载</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style=" font-size: 18px;">
+                                <span class="caret"></span>
+                                <span class="sr-only">切换下拉菜单</span>
+                            </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a id='d2cpustop'>卫星2</a></li>
+                            <li><a id='d3cpustop'>卫星3</a></li>
+                            <li><a id='d4cpustop'>卫星4</a></li>
+                            <li><a id='d5cpustop'>卫星5</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style=" font-size: 18px;">卫星退出</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style=" font-size: 18px;">
+                                <span class="caret"></span>
+                                <span class="sr-only">切换下拉菜单</span>
+                            </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a id='d2shut'>卫星2</a></li>
+                            <li><a id='d3shut'>卫星3</a></li>
+                            <li><a id='d4shut'>卫星4</a></li>
+                            <li><a id='d5shut'>卫星5</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button id="taskcontainerstart" type="button" class="btn btn-default" style=" font-size: 18px;">部署任务</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- 动态变化 -->
+            <div class='section' style="top: 17%;left: 1.5%;width: 50%;height: 38%;">
+                <div id="charttopology" style="position:absolute;top:17%;left: 0%;width: 100%;height: 80%;z-index: 2000;"></div>
+                <div style="position:absolute;top:15%;left: 0%;width: 100%;height: 78%;z-index: 1000;opacity: 0.5;">
+                    <img src="images\globe-1849404_1280.png" style="width: 780px; ">
+                </div>
+                <div style="position:absolute;bottom:0%;left: 0%;width: 100%;z-index: 2000;">
+                    <h3>云边端一体化临时算网</h3>
+                </div>
+            </div>
+            <!-- 容器部署-->
+            <div class='section' style="position: absolute;top:17%;left:51.5%;width:47%;height: 45%;">
+
+                <h3 style="color: azure;padding: 0.1em;">任务总数：
+                    <code id="containernumber" style="display: inline; color: #113864;">
+                            </code>
+                </h3>
+                <div id="barchartnum" style="position: absolute;top: 10%;width: 97%;height: 93%;"></div>
+                <div id="background2" class="background" style="display: none; "></div>
+                <div id="progressBar2" class="progressBar" style="display: none; position: absolute; left:40%; top: 45%;width: 500px;">
+                    <img src="images/progressbar.gif" style="text-align: center; padding-left: 60px; width: 20px; height: 20px;">
+                    <p>部署中，请稍等...
+                        <p>
+                </div>
+            </div>
+            <!-- 协议图-->
+            <div class='section' style="top: 55%;  left: 1.5%;width: 50%;height: 44%; padding: 0.5em;">
+                <div style="left:0%;top:0%;" style="width: 59%;height:95%;padding: 1em;">
+                    <img id='xygif' src='images\场景右侧步骤图\协议层数据流交互.png' style="width: 80%;left:0%;top:0%;">
+                </div>
+                <div style="position:absolute;bottom:0%;left: 0%;width: 100%;z-index: 2000;">
+                    <h3>协议模型</h3>
+                </div>
+            </div>
+
+            <!-- 任务部署和设备信息-->
+            <div class='section ' style="top: 62%;left: 51.5%;width: 47%;height: 37%;padding: 0.5%;">
+                <!-- 设备信息-->
+                <div style="position: absolute;left: 0%;width: 100%;height: 96%;padding: 0.5em;">
+                    <!--            <div id="charttopology" style="top:5%;left: 50%;width: 50%;height: 100%;"></div> -->
+                    <div id="barchartcpu" style='position: absolute; top: 0%;left: 2%;width:97%;height: 100%; '></div>
+                </div>
+            </div>
+        </div>
+
+
+    </center>
+    <script type="text/javascript">
+        $(function() {
+            $(document).on('click', '#myTab a', function(e) {
+                e.preventDefault(); //阻止a链接的跳转行为
+                $(this).tab('show'); //显示当前选中的链接及关联的content
+            })
+        });
+        $(document).on('click', '#matrixtab', function(e) {
+            e.preventDefault(); //阻止a链接的跳转行为
+            $(this).tab('show'); //显示当前选中的链接及关联的content
+        });
+
+        function refresh(number) { //更新系统信息      
+            var ChartCPU = echarts.init(document.getElementById('barchartcpu'));
+            let chartstatus = setInterval(function() {
+                if (errorcount >= number) {
+                    console.log('stop refresh info');
+                    clearInterval(chartstatus);
+                } else {}
+                //获得gpu cpu数据
+                getchart();
+                /* ChartCPU.clear(); */
+                ChartCPU.setOption(optioncpu, true);
+                console.log('htmlerrorcount:' + errorcount);
+
+            }, 1500); //局部刷新1000ms
+
+        }
+        refresh(1);
+        //=========================//===============================//
+
+        function refreshcontainer(number) { //更新容器信息
+
+            var myChartNum = echarts.init(document.getElementById("barchartnum"));
+            myChartNum.clear();
+            let refreshcontainer = setInterval(function() {
+                if (errorcountcon >= number) {
+                    clearInterval(refreshcontainer);
+                    console.log("stop refresh container");
+                }
+                getchartnum();
+                myChartNum.setOption(optionnum, true); //生成容器数量柱状图
+                $("#containernumber").html(getnumsum()); //获得容器总数
+                console.log('errorcontainer ' + errorcountcon);
+            }, 1000); //局部刷新1000ms
+        };
+        refreshcontainer(1); //setoption num 循环
+
+        function refreshTopology() { //更新拓扑图
+            var ChartTopology = echarts.init(document.getElementById("charttopology"));
+            ChartTopology.clear();
+            let refreshTopology = setInterval(function() {
+                updatetopology();
+                ChartTopology.setOption(optiontopology, true);
+            }, 1000); //局部刷新1000ms
+        };
+        refreshTopology();
+    </script>
+    <script src="mnyzpt.js"></script>
+</body>
+
+</html>
+
+</html>
